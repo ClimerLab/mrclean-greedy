@@ -216,7 +216,11 @@ void DataContainer::write(const std::string &file_name,
 
       for (std::size_t j = 0; j < num_data_cols; ++j) {
         if (cols_to_keep[j]) {
-          fprintf(output, "\t%s", data[i][j].c_str());
+          if (is_data_na(i,j)) {
+            fprintf(output, "\tNA");
+          } else {
+            fprintf(output, "\t%s", data[i][j].c_str());
+          }
         }
       }
       fprintf(output, "\n");
@@ -284,7 +288,11 @@ void DataContainer::write(const std::string &file_name,
 
       for (std::size_t j = 0; j < num_data_cols; ++j) {
         if (cols_to_keep[j]) {
-          fprintf(output, "\t%s", data[i][j].c_str());
+          if (is_data_na(i,j)) {
+            fprintf(output, "\tNA");
+          } else {
+            fprintf(output, "\t%s", data[i][j].c_str());
+          }
         }
       }
       fprintf(output, "\n");

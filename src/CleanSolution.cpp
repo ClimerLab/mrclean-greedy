@@ -6,8 +6,8 @@
 
 
 CleanSolution::CleanSolution(const std::size_t num_rows,
-                             const std::size_t num_cols) :  rows_to_keep(num_rows, true),
-                                                            cols_to_keep(num_cols, true) {}
+                             const std::size_t num_cols) :  rows_to_keep(num_rows, false),
+                                                            cols_to_keep(num_cols, false) {}
 
 CleanSolution::CleanSolution(const std::vector<bool> &_rows_to_keep,
                              const std::vector<bool> &_cols_to_keep) :  rows_to_keep(_rows_to_keep),
