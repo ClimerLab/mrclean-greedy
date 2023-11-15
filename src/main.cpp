@@ -21,7 +21,7 @@ void write_stats_to_file(const std::string &file_name,
 
 int main(int argc, char *argv[]) {
   if (!((argc == 5) || (argc == 7))) {
-    fprintf(stderr, "Usage: %s <data_file> <max_missing> <na_symbol> <output_path> (opt)<num_header_rows> (opt)<num_header_cols>\n", argv[0]);
+    fprintf(stderr, "Usage: %s <data_file> <max_missing> <na_symbol> <output_path> (opt)<num_hr> (opt)<num_hc>\n", argv[0]);
     exit(EXIT_FAILURE);
   }
 
