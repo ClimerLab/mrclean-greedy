@@ -6,7 +6,7 @@ A greedy algorithm is used to determine which rows and columns to remove. The pe
 ### To Use
 Compile with the Makefile by navigating to the root directory and entering: make
 
-Run the program by entering: ./mrclean-greedy <data_file> <max_missing> <na_symbol> <output_path> (opt)<num_header_rows> (opt)<num_header_cols>
+Run the program by entering: ./mrclean-greedy <data_file> <max_missing> <na_symbol> <output_path> (opt)<num_hr> (opt)<num_hc>
 
 ### Inputs
 <data_file> - Path to data file
@@ -17,9 +17,9 @@ Run the program by entering: ./mrclean-greedy <data_file> <max_missing> <na_symb
 
 <output_path> - Directory to record results
 
-<num_header_rows> - (Optional) Number of header rows in the data file. Defaults to 1 if no value is provided
+<num_hr> - (Optional) Number of header rows in the data file. Defaults to 1 if no value is provided
 
-<num_header_cols> - (Optional) Number of header columns in the data file. Defaults to 1 if no value is provided
+<num_hc> - (Optional) Number of header columns in the data file. Defaults to 1 if no value is provided
 
 ### Outputs
 Greedy_summary.csv - File containing details of cleaning result. The following columns are recorded each time the program runs.
