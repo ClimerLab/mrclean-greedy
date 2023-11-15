@@ -23,11 +23,17 @@ Run the program by entering: ./mrclean-greedy <data_file> <max_missing> <na_symb
 
 ### Outputs
 Greedy_summary.csv - File containing details of cleaning result. The following columns are recorded each time the program runs.
+
 data_file - Input data file
+
 max_perc_missing - Maximum percentage of missing data that the file was cleaned to
+
 time - Run time of mrclean-greedy
+
 num_val_elements - Number of valid elements in cleaned file
+
 num_rows_kept - Number of data rows in cleaned matrix
+
 num_cols_kept - Number of data columns in cleaned matrix
 
 
