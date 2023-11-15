@@ -3,8 +3,7 @@
 
 #include <string>
 #include <vector>
-class BinContainer
-{
+class BinContainer {
 private:
   const std::string file_name;
   const std::string na_symbol;
