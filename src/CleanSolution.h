@@ -4,8 +4,7 @@
 #include <vector>
 #include <string>
 
-class CleanSolution
-{
+class CleanSolution {
 private:
   std::vector<bool> rows_to_keep;
   std::vector<bool> cols_to_keep;
