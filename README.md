@@ -9,11 +9,16 @@ Compile with the Makefile by navigating to the root directory and entering: make
 Run the program by entering: ./mrclean-greedy <data_file> <max_missing> <na_symbol> <output_path> (opt)<num_header_rows> (opt)<num_header_cols>
 
 ### Inputs
-<data_file> - Path to data file \\
+<data_file> - Path to data file
+
 <max_missing> - Decimal value indicating maximum percentage of missing data in each row and column of the cleaned matrix
+
 <na_symbol> - Symbol used to indicate missing values in the data_file
+
 <output_path> - Directory to record results
+
 <num_header_rows> - (Optional) Number of header rows in the data file. Defaults to 1 if no value is provided
+
 <num_header_cols> - (Optional) Number of header columns in the data file. Defaults to 1 if no value is provided
 
 ### Outputs
