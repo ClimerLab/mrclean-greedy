@@ -21,7 +21,7 @@ EXE = mrclean-greedy
 # Object files
 #---------------------------------------------------------------------------------------------------
 
-OBJ = GreedySolver.o Timer.o CleanSolution.o BinContainer.o
+OBJ = GreedySolver.o Timer.o CleanSolution.o BinContainer.o AddRowGreedy.o
 ALL_OBJ = $(OBJ) main.o
 
 #---------------------------------------------------------------------------------------------------
@@ -42,6 +42,10 @@ mrclean-greedy: $(addprefix $(OBJDIR)/, main.o)
 
 $(OBJDIR)/main.o:	$(addprefix $(SRCDIR)/, main.cpp) \
 	$(addprefix $(OBJDIR)/, $(OBJ))
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -o $@ $<
+
+$(OBJDIR)/AddRowGreedy.o:	$(addprefix $(SRCDIR)/, AddRowGreedy.cpp AddRowGreedy.h) \
+							            $(addprefix $(OBJDIR)/, BinContainer.o)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -o $@ $<
 
 $(OBJDIR)/CleanSolution.o: $(addprefix $(SRCDIR)/, CleanSolution.cpp CleanSolution.h)
