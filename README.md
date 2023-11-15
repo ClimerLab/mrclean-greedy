@@ -42,7 +42,7 @@ num_cols_kept - Number of data columns in cleaned matrix
 <output_path><data_file>\_gamma_<max_missing>_cleaned.tsv - File containing the cleaned data, along with the retained header rows and header columns.
 
 ### Retained Rows and Columns File
-<output_path><data_file>_gamma_<max_missing>_cleaned.sol - File containing two binary vectors indicating which rows and columns were retained. First vector corresponds to rows and the second to columns.
+<output_path><data_file>\_gamma_<max_missing>_cleaned.sol - File containing two binary vectors indicating which rows and columns were retained. First vector corresponds to rows and the second to columns.
 
 ## Notes
 The <data_file> should be tab seperated.
