@@ -5,7 +5,6 @@
 #include <iostream>
 #include <iomanip>
 
-#include "DataContainer.h"
 #include "GreedySolver.h"
 #include "Timer.h"
 #include "CleanSolution.h"

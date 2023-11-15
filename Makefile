@@ -21,7 +21,7 @@ EXE = mrclean-greedy
 # Object files
 #---------------------------------------------------------------------------------------------------
 
-OBJ = DataContainer.o GreedySolver.o Timer.o CleanSolution.o BinContainer.o
+OBJ = GreedySolver.o Timer.o CleanSolution.o BinContainer.o
 ALL_OBJ = $(OBJ) main.o
 
 #---------------------------------------------------------------------------------------------------
@@ -41,20 +41,16 @@ mrclean-greedy: $(addprefix $(OBJDIR)/, main.o)
 	$(CXX) -o $@ $(addprefix $(OBJDIR)/, $(ALL_OBJ))
 
 $(OBJDIR)/main.o:	$(addprefix $(SRCDIR)/, main.cpp) \
-									$(addprefix $(OBJDIR)/, $(OBJ))
+	$(addprefix $(OBJDIR)/, $(OBJ))
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -o $@ $<
 
 $(OBJDIR)/CleanSolution.o: $(addprefix $(SRCDIR)/, CleanSolution.cpp CleanSolution.h)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-
 $(OBJDIR)/GreedySolver.o:	$(addprefix $(SRCDIR)/, GreedySolver.cpp GreedySolver.h) \
 													$(addprefix $(SRCDIR)/, MrCleanUtils.h) \
-				   								$(addprefix $(OBJDIR)/, DataContainer.o)
+				   								$(addprefix $(OBJDIR)/, BinContainer.o)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -o $@ $<
-
-$(OBJDIR)/DataContainer.o: $(addprefix $(SRCDIR)/, DataContainer.cpp DataContainer.h)
-	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 $(OBJDIR)/BinContainer.o: $(addprefix $(SRCDIR)/, BinContainer.cpp BinContainer.h)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<

@@ -3,10 +3,8 @@
 
 #include <vector>
 #include "BinContainer.h"
-// #include "DataContainer.h"
 
-class GreedySolver
-{
+class GreedySolver {
 private:
   const BinContainer *data;
   const std::size_t num_rows;
