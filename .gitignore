@@ -30,11 +30,13 @@
 *.exe
 *.out
 *.app
-greedy_cleaner
+mrclean-greedy
 
 # Data files
 *.sol
 *.tsv
 *.csv
 *.json
+
+# Scripts
 *.sh
