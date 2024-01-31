@@ -2,6 +2,10 @@
 #define MR_CLEAN_UTILS_H
 
 #include <vector>
+<<<<<<< HEAD
+#include "DataContainer.h"
+=======
+>>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc
 
 namespace mr_clean_utils { 
  struct SortPairByFirstItemDecreasing

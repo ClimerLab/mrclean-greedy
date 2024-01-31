@@ -32,5 +32,11 @@
 *.app
 mrclean-greedy
 
+# Data files
+*.sol
+*.tsv
+*.csv
+*.json
+
 # Scripts
 *.sh

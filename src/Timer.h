@@ -5,6 +5,29 @@
 #include <sys/time.h>
 #include <time.h>
 
+<<<<<<< HEAD
+class Timer
+{
+  private:
+    bool running;
+    double accumulated_cpu_time;
+    double accumulated_wall_time;
+    double start_cpu_time;
+    double start_wall_time;
+
+    double get_cpu_time() const;
+    double get_wall_time() const;
+
+  public:
+    Timer(const bool = false);
+    tm *current_time() const;
+    double elapsed_cpu_time() const;
+    double elapsed_wall_time() const;
+    void reset();
+    void restart();
+    void start();
+    void stop();
+=======
 class Timer {
 private:
   bool running;
@@ -25,6 +48,7 @@ public:
   void restart();
   void start();
   void stop();
+>>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc
 };
 
 #endif

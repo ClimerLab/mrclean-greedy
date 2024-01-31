@@ -5,6 +5,20 @@
 //------------------------------------------------------------------------------
 // Constructor.
 //------------------------------------------------------------------------------
+<<<<<<< HEAD
+AddRowGreedy::AddRowGreedy(const DataContainer &_data) :  data(&_data),
+                                                          num_rows(data->get_num_data_rows()),
+                                                          num_cols(data->get_num_data_cols()),
+                                                          best_obj_value(0),
+                                                          best_num_rows(0),
+                                                          columns(num_cols, true),
+                                                          num_included_cols(num_cols),
+                                                          alphas(num_rows),
+                                                          excluded_rows(num_rows) {
+  // Initialize alphas & set all rows to excluded
+  for (std::size_t i = 0; i < num_rows; ++i) {
+    alphas[i] = data->get_num_valid_in_row(i);
+=======
 AddRowGreedy::AddRowGreedy(const BinContainer &_data) : data(&_data),
                                                         num_rows(data->get_num_data_rows()),
                                                         num_cols(data->get_num_data_cols()),
@@ -21,6 +35,7 @@ AddRowGreedy::AddRowGreedy(const BinContainer &_data) : data(&_data),
         ++alphas[i];
       }
     }
+>>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc
     excluded_rows[i] = i;
   }  
 }
@@ -30,6 +45,10 @@ AddRowGreedy::AddRowGreedy(const BinContainer &_data) : data(&_data),
 //------------------------------------------------------------------------------
 AddRowGreedy::~AddRowGreedy() {}
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc
 //------------------------------------------------------------------------------
 // Finds the greedy solution to the cleaning problem. To begin, all rows are 
 // excluded from the solution. Rows are iteratvely added to the solution. Upon
