@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# MrClean-Greedy
-=======
 # mrclean-greedy
 Cleans a text file of data by removing rows and columns until the percentage of missing data in each remaining row and columns is below a certain threshold.
 
@@ -51,4 +48,3 @@ num_cols_kept - Number of data columns in cleaned matrix
 The <data_file> should be tab seperated.
 
 The original data file is unaltered.
->>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc
