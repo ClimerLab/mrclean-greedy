@@ -41,19 +41,19 @@ mrclean-greedy: $(addprefix $(OBJDIR)/, main.o)
 	$(CXX) -o $@ $(addprefix $(OBJDIR)/, $(ALL_OBJ))
 
 $(OBJDIR)/main.o:	$(addprefix $(SRCDIR)/, main.cpp) \
-	$(addprefix $(OBJDIR)/, $(OBJ))
+			$(addprefix $(OBJDIR)/, $(OBJ))
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -o $@ $<
 
 $(OBJDIR)/AddRowGreedy.o:	$(addprefix $(SRCDIR)/, AddRowGreedy.cpp AddRowGreedy.h) \
-							            $(addprefix $(OBJDIR)/, BinContainer.o)
+				$(addprefix $(OBJDIR)/, BinContainer.o)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -o $@ $<
 
 $(OBJDIR)/CleanSolution.o: $(addprefix $(SRCDIR)/, CleanSolution.cpp CleanSolution.h)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 $(OBJDIR)/GreedySolver.o:	$(addprefix $(SRCDIR)/, GreedySolver.cpp GreedySolver.h) \
-													$(addprefix $(SRCDIR)/, MrCleanUtils.h) \
-				   								$(addprefix $(OBJDIR)/, BinContainer.o)
+				$(addprefix $(SRCDIR)/, MrCleanUtils.h) \
+				$(addprefix $(OBJDIR)/, BinContainer.o)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -o $@ $<
 
 $(OBJDIR)/BinContainer.o: $(addprefix $(SRCDIR)/, BinContainer.cpp BinContainer.h)

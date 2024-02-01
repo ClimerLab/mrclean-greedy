@@ -77,7 +77,7 @@ int main(int argc, char *argv[]) {
 
   auto rows_to_keep = sol.get_rows_to_keep();
   auto cols_to_keep = sol.get_cols_to_keep();
- 
+
   double time = timer.elapsed_cpu_time();
   std::size_t num_val_elements = data.get_num_valid_data_kept(rows_to_keep, cols_to_keep);
   std::size_t num_rows_kept = sol.get_num_rows_kept();

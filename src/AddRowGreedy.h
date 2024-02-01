@@ -2,7 +2,6 @@
 #define ADD_ROW_GREEDY_H
 
 #include <vector>
-
 #include "BinContainer.h"
 
 class AddRowGreedy {
