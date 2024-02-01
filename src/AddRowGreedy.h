@@ -3,20 +3,11 @@
 
 #include <vector>
 
-<<<<<<< HEAD
-#include "DataContainer.h"
-
-class AddRowGreedy
-{
-private:
-  const DataContainer *data;
-=======
 #include "BinContainer.h"
 
 class AddRowGreedy {
 private:
   const BinContainer *data;
->>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc
   const std::size_t num_rows;
   const std::size_t num_cols;
 
@@ -36,11 +27,7 @@ private:
   void update_alphas(const std::size_t row);
 
 public:
-<<<<<<< HEAD
-  AddRowGreedy(const DataContainer &_data);
-=======
   AddRowGreedy(const BinContainer &_data);
->>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc
   ~AddRowGreedy();
 
   void solve();
@@ -51,10 +38,4 @@ public:
   std::size_t get_num_cols_to_keep() const;
 };
 
-<<<<<<< HEAD
-
-
 #endif
-=======
-#endif
->>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc

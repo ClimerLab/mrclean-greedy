@@ -5,19 +5,11 @@
 #include <iostream>
 #include <iomanip>
 
-<<<<<<< HEAD
-#include "DataContainer.h"
-#include "GreedySolver.h"
-#include "AddRowGreedy.h"
-#include "Timer.h"
-#include "CleanSolution.h"
-=======
 #include "GreedySolver.h"
 #include "Timer.h"
 #include "CleanSolution.h"
 #include "BinContainer.h"
 #include "AddRowGreedy.h"
->>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc
 
 void write_stats_to_file(const std::string &file_name,
                          const std::string &data_file,
@@ -29,19 +21,10 @@ void write_stats_to_file(const std::string &file_name,
 
 int main(int argc, char *argv[]) {
   if (!((argc == 5) || (argc == 7))) {
-<<<<<<< HEAD
-    fprintf(stderr, "Usage: %s <data_file> <max_missing> <na_symbol> <output_path> (opt)<num_header_rows> (opt)<num_header_cols>\n", argv[0]);
-    exit(EXIT_FAILURE);
-  }
-
-  // THIS IS A TEST
-  
-=======
     fprintf(stderr, "Usage: %s <data_file> <max_missing> <na_symbol> <output_path> (opt)<num_hr> (opt)<num_hc>\n", argv[0]);
     exit(EXIT_FAILURE);
   }
 
->>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc
   std::string data_file(argv[1])  ;
   double max_perc_missing = std::stod(argv[2]);
   std::string na_symbol(argv[3]);
@@ -61,31 +44,6 @@ int main(int argc, char *argv[]) {
   Timer timer;
   timer.start();
 
-<<<<<<< HEAD
-  DataContainer data(data_file, na_symbol, num_header_rows, num_header_cols);
-  CleanSolution sol(data.get_num_data_rows(), data.get_num_data_cols());
-
-  if (max_perc_missing < 1.0) {
-    GreedySolver greedy_solver(data, max_perc_missing);
-    fprintf(stderr, "running greedy\n");
-    greedy_solver.solve();
-    sol.update(greedy_solver.get_rows_kept_as_bool(), greedy_solver.get_cols_kept_as_bool());
-
-    if (max_perc_missing == 0.0) {
-      AddRowGreedy ar_greedy(data);
-      fprintf(stderr, "running nomiss greedy\n");
-      ar_greedy.solve();
-
-      auto ar_rows_to_keep = ar_greedy.get_rows_to_keep();
-      auto ar_cols_to_keep = ar_greedy.get_cols_to_keep();
-
-      std::size_t ar_num_elements_kept = data.get_num_valid_data_kept(ar_rows_to_keep, ar_cols_to_keep);
-      std::size_t greedy_num_elements_kept = data.get_num_valid_data_kept(sol.get_rows_to_keep(), sol.get_cols_to_keep());
-
-      if (ar_num_elements_kept > greedy_num_elements_kept) {
-        sol.update(ar_rows_to_keep, ar_cols_to_keep);
-      }
-=======
   BinContainer data(data_file, na_symbol, num_header_rows, num_header_cols);
   fprintf(stderr, "Num rows: %lu\n", data.get_num_data_rows());
   fprintf(stderr, "Num cols: %lu\n", data.get_num_data_cols());
@@ -112,7 +70,6 @@ int main(int argc, char *argv[]) {
 
     if (ar_num_elements_kept > greedy_num_elements_kept) {
       sol.update(ar_rows_to_keep, ar_cols_to_keep);
->>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc
     }
   }
 
@@ -120,10 +77,7 @@ int main(int argc, char *argv[]) {
 
   auto rows_to_keep = sol.get_rows_to_keep();
   auto cols_to_keep = sol.get_cols_to_keep();
-<<<<<<< HEAD
-=======
  
->>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc
   double time = timer.elapsed_cpu_time();
   std::size_t num_val_elements = data.get_num_valid_data_kept(rows_to_keep, cols_to_keep);
   std::size_t num_rows_kept = sol.get_num_rows_kept();
@@ -139,11 +93,7 @@ int main(int argc, char *argv[]) {
   std::string partial_file = out_path + file_name + "_gamma_" + gamma.str().c_str();
 
   std::string cleaned_file =  partial_file + "_cleaned.tsv";
-<<<<<<< HEAD
-  data.write(cleaned_file, rows_to_keep, cols_to_keep);
-=======
   data.write_orig(cleaned_file, rows_to_keep, cols_to_keep);
->>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc
 
   write_stats_to_file("Greedy_summary.csv", data_file, max_perc_missing, time, num_val_elements, num_rows_kept, num_cols_kept);
 

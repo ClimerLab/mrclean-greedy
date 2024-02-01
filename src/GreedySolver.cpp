@@ -6,19 +6,6 @@
 //------------------------------------------------------------------------------
 // Constructor.
 //------------------------------------------------------------------------------
-<<<<<<< HEAD
-GreedySolver::GreedySolver(const DataContainer &_data,
-                           const double _max_perc_miss) : data(&_data),
-                                                            num_rows(data->get_num_data_rows()),
-                                                            num_cols(data->get_num_data_cols()),
-                                                            max_perc_miss(_max_perc_miss),
-                                                            alphas(num_rows),
-                                                            betas(num_cols),
-                                                            keep_row(num_rows, true),
-                                                            keep_col(num_cols, true),
-                                                            num_rows_kept(num_rows),
-                                                            num_cols_kept(num_cols) {
-=======
 GreedySolver::GreedySolver(const BinContainer &_data,
                            const double _max_perc_miss) : data(&_data),
                                                           num_rows(data->get_num_data_rows()),
@@ -30,7 +17,6 @@ GreedySolver::GreedySolver(const BinContainer &_data,
                                                           keep_col(num_cols, true),
                                                           num_rows_kept(num_rows),
                                                           num_cols_kept(num_cols) {
->>>>>>> eb6d5a779d8584000b1c0e0df1c0bd89bf1bafdc
   calc_alphas();
   calc_betas();
 }
