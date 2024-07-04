@@ -21,15 +21,15 @@ void write_stats_to_file(const std::string &file_name,
 
 int main(int argc, char *argv[]) {
   if (!((argc == 7) || (argc == 9))) {
-    fprintf(stderr, "Usage: %s <data_file> <max_missing> <na_symbol> <min_row> <min_col> <output_path> (opt)<num_hr> (opt)<num_hc>\n", argv[0]);
+    fprintf(stderr, "Usage: %s <data_file> <max_missing> <na_symbol> <min_rows> <min_cols> <output_path> (opt)<num_hr> (opt)<num_hc>\n", argv[0]);
     exit(EXIT_FAILURE);
   }
 
   std::string data_file(argv[1])  ;
   double max_perc_missing = std::stod(argv[2]);
   std::string na_symbol(argv[3]);
-  std::size_t min_row = std::stoul(argv[4]);
-  std::size_t min_col = std::stoul(argv[5]);
+  std::size_t min_rows = std::stoul(argv[4]);
+  std::size_t min_cols = std::stoul(argv[5]);
   std::string out_path(argv[6]);
 
   std::size_t num_header_rows = 1;
@@ -51,10 +51,20 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "Num cols: %lu\n", data.get_num_data_cols());
   fprintf(stderr, "Num valid data: %lu\n", data.get_num_valid_data());
   fprintf(stderr, "Max percent missing: %lf\n\n", max_perc_missing);
+
+  // Check that min_rows and min_cols are <= num_data_rows and num_data_cols
+  if (min_rows > data.get_num_data_rows()) {
+    fprintf(stderr, "ERROR - min_rows must be <= num_data_rows (%lu vs. %lu).\n", min_rows, data.get_num_data_rows());
+    exit(EXIT_FAILURE);
+  }
+  if (min_cols > data.get_num_data_cols()) {
+    fprintf(stderr, "ERROR - min_cols must be <= num_data_cols (%lu vs. %lu).\n", min_cols, data.get_num_data_cols());
+    exit(EXIT_FAILURE);
+  }
   
   CleanSolution sol(data.get_num_data_rows(), data.get_num_data_cols());
 
-  GreedySolver greedy_solver(data, max_perc_missing);
+  GreedySolver greedy_solver(data, max_perc_missing, min_rows, min_cols);
   fprintf(stderr, "running greedy\n");
   greedy_solver.solve();
   sol.update(greedy_solver.get_rows_kept_as_bool(), greedy_solver.get_cols_kept_as_bool());
