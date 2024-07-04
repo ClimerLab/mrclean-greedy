@@ -20,21 +20,23 @@ void write_stats_to_file(const std::string &file_name,
                          const std::size_t num_cols_kept);
 
 int main(int argc, char *argv[]) {
-  if (!((argc == 5) || (argc == 7))) {
-    fprintf(stderr, "Usage: %s <data_file> <max_missing> <na_symbol> <output_path> (opt)<num_hr> (opt)<num_hc>\n", argv[0]);
+  if (!((argc == 7) || (argc == 9))) {
+    fprintf(stderr, "Usage: %s <data_file> <max_missing> <na_symbol> <min_row> <min_col> <output_path> (opt)<num_hr> (opt)<num_hc>\n", argv[0]);
     exit(EXIT_FAILURE);
   }
 
   std::string data_file(argv[1])  ;
   double max_perc_missing = std::stod(argv[2]);
   std::string na_symbol(argv[3]);
-  std::string out_path(argv[4]);
+  std::size_t min_row = std::stoul(argv[4]);
+  std::size_t min_col = std::stoul(argv[5]);
+  std::string out_path(argv[6]);
 
   std::size_t num_header_rows = 1;
   std::size_t num_header_cols = 1;
-  if (argc == 7) {
-    num_header_rows = std::stoul(argv[5]);
-    num_header_cols = std::stoul(argv[6]);
+  if (argc == 9) {
+    num_header_rows = std::stoul(argv[7]);
+    num_header_cols = std::stoul(argv[8]);
   }
 
   if ((max_perc_missing < 0) || (max_perc_missing > 1)) {
