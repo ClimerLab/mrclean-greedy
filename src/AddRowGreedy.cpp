@@ -5,15 +5,19 @@
 //------------------------------------------------------------------------------
 // Constructor.
 //------------------------------------------------------------------------------
-AddRowGreedy::AddRowGreedy(const BinContainer &_data) : data(&_data),
-                                                        num_rows(data->get_num_data_rows()),
-                                                        num_cols(data->get_num_data_cols()),
-                                                        best_obj_value(0),
-                                                        best_num_rows(0),
-                                                        columns(num_cols, true),
-                                                        num_included_cols(num_cols),
-                                                        alphas(num_rows, 0),
-                                                        excluded_rows(num_rows) {
+AddRowGreedy::AddRowGreedy(const BinContainer &_data,
+                           const std::size_t _min_rows,
+                           const std::size_t _min_cols) : data(&_data),
+                                                          num_rows(data->get_num_data_rows()),
+                                                          num_cols(data->get_num_data_cols()),
+                                                          min_rows(_min_rows),
+                                                          min_cols(_min_cols),
+                                                          best_obj_value(0),
+                                                          best_num_rows(0),
+                                                          columns(num_cols, true),
+                                                          num_included_cols(num_cols),
+                                                          alphas(num_rows, 0),
+                                                          excluded_rows(num_rows) {
   // Initialize alphas & set all rows to excluded
   for (std::size_t i = 0; i < num_rows; ++i) {
     for (std::size_t j = 0; j < num_cols; ++j) {
@@ -54,7 +58,9 @@ void AddRowGreedy::solve() {
     std::size_t cur_obj = calc_obj();
 
     // If current objective value is better than incumbent, update obj_value and num_rows
-    if (cur_obj > best_obj_value) {
+    if (cur_obj > best_obj_value &&
+        included_rows.size() >= min_rows &&
+        num_included_cols >= min_cols) {
       best_obj_value = cur_obj;
       best_num_rows = included_rows.size();
     }

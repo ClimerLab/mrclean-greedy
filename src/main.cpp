@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
   sol.update(greedy_solver.get_rows_kept_as_bool(), greedy_solver.get_cols_kept_as_bool());
 
   if (max_perc_missing == 0.0) {
-    AddRowGreedy ar_greedy(data);
+    AddRowGreedy ar_greedy(data, min_rows, min_cols);
     fprintf(stderr, "running add-row greedy\n");
     ar_greedy.solve();
 

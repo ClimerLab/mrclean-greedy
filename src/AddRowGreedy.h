@@ -9,6 +9,8 @@ private:
   const BinContainer *data;
   const std::size_t num_rows;
   const std::size_t num_cols;
+  const std::size_t min_rows;
+  const std::size_t min_cols;
 
   std::size_t best_obj_value;
   std::size_t best_num_rows;
@@ -26,7 +28,9 @@ private:
   void update_alphas(const std::size_t row);
 
 public:
-  AddRowGreedy(const BinContainer &_data);
+  AddRowGreedy(const BinContainer &_data,
+               const std::size_t _min_rows,
+               const std::size_t _min_cols);
   ~AddRowGreedy();
 
   void solve();
