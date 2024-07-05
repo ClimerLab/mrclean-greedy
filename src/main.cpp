@@ -21,15 +21,15 @@ void write_stats_to_file(const std::string &file_name,
 
 int main(int argc, char *argv[]) {
   if (!((argc == 7) || (argc == 9))) {
-    fprintf(stderr, "Usage: %s <data_file> <max_missing> <na_symbol> <min_rows> <min_cols> <output_path> (opt)<num_hr> (opt)<num_hc>\n", argv[0]);
+    fprintf(stderr, "Usage: %s <data_file> <max_missing> <min_rows> <min_cols> <na_symbol> <output_path> (opt)<num_hr> (opt)<num_hc>\n", argv[0]);
     exit(EXIT_FAILURE);
   }
 
   std::string data_file(argv[1])  ;
   double max_perc_missing = std::stod(argv[2]);
-  std::string na_symbol(argv[3]);
-  std::size_t min_rows = std::stoul(argv[4]);
-  std::size_t min_cols = std::stoul(argv[5]);
+  std::size_t min_rows = std::stoul(argv[3]);
+  std::size_t min_cols = std::stoul(argv[4]);
+  std::string na_symbol(argv[5]);
   std::string out_path(argv[6]);
 
   std::size_t num_header_rows = 1;
