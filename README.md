@@ -6,18 +6,18 @@ A greedy algorithm is used to determine which rows and columns to remove. The pe
 ## To Use
 Compile with the Makefile by navigating to the root directory and entering: make
 
-Run the program by entering: ./mrclean-greedy <data_file> <max_missing> <na_symbol> <min_rows> <min_cols> <output_path> (opt)<num_hr> (opt)<num_hc>
+Run the program by entering: ./mrclean-greedy <data_file> <max_missing> <row_lb> <col_lb> <na_symbol> <output_path> (opt)<num_hr> (opt)<num_hc>
 
 ## Inputs
 <data_file> - Path to data file
 
 <max_missing> - Decimal value indicating maximum percentage of missing data in each row and column of the cleaned matrix
 
+<row_lb> - Minimum number of rows allowed in a solution
+
+<col_lb> - Minimum number of columns allowed in a solution
+
 <na_symbol> - Symbol used to indicate missing values in the data_file
-
-<min_rows> - Minimum number of rows allowed in a solution
-
-<min_cols> - Minimum number of columns allowed in a solution
 
 <output_path> - Directory to record results
 
