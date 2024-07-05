@@ -10,6 +10,8 @@ private:
   const std::size_t num_rows;
   const std::size_t num_cols;
   const double max_perc_miss;
+  const std::size_t min_rows;
+  const std::size_t min_cols;
   
   std::vector<std::size_t> alphas;
   std::vector<std::size_t> betas;
@@ -35,10 +37,14 @@ private:
 
   std::size_t calc_num_rows_to_remove(const std::size_t idx) const;
   std::size_t calc_num_cols_to_remove(const std::size_t idx) const;
+
+  bool matrix_cleaned() const;
   
 public:
   GreedySolver(const BinContainer &_data,
-               const double max_perc_miss);
+               const double max_perc_miss,
+               const std::size_t _min_rows,
+               const std::size_t _min_cols);
   ~GreedySolver();
 
   void solve();

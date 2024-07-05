@@ -44,15 +44,15 @@ void BinContainer::read() {
   const std::size_t num_data_rows = num_rows - num_header_rows;
   const std::size_t num_data_cols = num_cols - num_header_cols;
 
-  fprintf(stderr, "Num rows: %lu\n", num_rows);
-  fprintf(stderr, "Num cols: %lu\n", num_cols);
+  // fprintf(stderr, "Num rows: %lu\n", num_rows);
+  // fprintf(stderr, "Num cols: %lu\n", num_cols);
 
   // Allocate memory
   std::vector<bool> data_row(num_data_cols);
   for (std::size_t i = 0; i < num_data_rows; ++i) {
     data.push_back(data_row);
   }
-  fprintf(stderr, "Allocated memory\n");
+  // fprintf(stderr, "Allocated memory\n");
 
   // Read in data
   input.seekg(std::ios_base::beg);  // Go to beginning of file
@@ -193,10 +193,10 @@ void BinContainer::write_orig(const std::string &out_file,
   const std::size_t num_data_rows = get_num_data_rows();
   const std::size_t num_data_cols = get_num_data_cols();
 
-  fprintf(stderr, "Num header rows: %lu\n", num_header_rows);
-  fprintf(stderr, "Num header cols: %lu\n", num_header_cols);
-  fprintf(stderr, "Num data rows: %lu\n", num_data_rows);
-  fprintf(stderr, "Num data cols: %lu\n", num_data_cols);
+  // fprintf(stderr, "Num header rows: %lu\n", num_header_rows);
+  // fprintf(stderr, "Num header cols: %lu\n", num_header_cols);
+  // fprintf(stderr, "Num data rows: %lu\n", num_data_rows);
+  // fprintf(stderr, "Num data cols: %lu\n", num_data_cols);
 
   std::string line;
   std::ifstream input;
