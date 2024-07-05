@@ -8,13 +8,13 @@
 //------------------------------------------------------------------------------
 GreedySolver::GreedySolver(const BinContainer &_data,
                            const double _max_perc_miss,
-                           const std::size_t _min_rows,
-                           const std::size_t _min_cols) : data(&_data),
+                           const std::size_t _row_lb,
+                           const std::size_t _col_lb) : data(&_data),
                                                           num_rows(data->get_num_data_rows()),
                                                           num_cols(data->get_num_data_cols()),
                                                           max_perc_miss(_max_perc_miss),
-                                                          min_rows(_min_rows),
-                                                          min_cols(_min_cols),
+                                                          row_lb(_row_lb),
+                                                          col_lb(_col_lb),
                                                           alphas(num_rows),
                                                           betas(num_cols),
                                                           keep_row(num_rows, true),
@@ -40,10 +40,10 @@ void GreedySolver::solve() {
     std::vector<std::size_t> idx_to_remove;
 
     // Check if both dimension limits are reached
-    if (get_num_rows_kept() == min_rows && get_num_cols_kept() == min_cols) {
-      fprintf(stderr, "ERROR - Matrix is at dimension limit (%lu x %lu), but fails percent missing requirement\n", min_rows, min_cols);
+    if (get_num_rows_kept() == row_lb && get_num_cols_kept() == col_lb) {
+      fprintf(stderr, "ERROR - Matrix is at dimension limit (%lu x %lu), but fails percent missing requirement\n", row_lb, col_lb);
       exit(EXIT_FAILURE);
-    } else if (get_num_rows_kept() == min_rows) { // Row limit reached
+    } else if (get_num_rows_kept() == row_lb) { // Row limit reached
       // Find row with most missing data
       std::size_t idx = num_rows;
       double worst_perc_miss = 0.0;
@@ -87,7 +87,7 @@ void GreedySolver::solve() {
       }
       idx_is_row = false;
 
-    } else if (get_num_cols_kept() == min_cols) { // Column limit reached
+    } else if (get_num_cols_kept() == col_lb) { // Column limit reached
       // Find columns with most missing data
       std::size_t idx = num_cols;
       double worst_perc_miss = 0.0;
@@ -272,7 +272,7 @@ void GreedySolver::solve() {
       // Loop through all rows to remove
       for (auto idx : idx_to_remove) {
         // Check that row limit has not been reached
-        if (get_num_rows_kept() > min_rows) {
+        if (get_num_rows_kept() > row_lb) {
           remove_row(idx);
           update_cols(idx);
         }
@@ -281,7 +281,7 @@ void GreedySolver::solve() {
       // Loop through all columns to remove
       for (auto idx : idx_to_remove) {
         // Check that columns limit has not been reached
-        if (get_num_cols_kept() > min_cols) {
+        if (get_num_cols_kept() > col_lb) {
           remove_col(idx);
           update_rows(idx);
         }

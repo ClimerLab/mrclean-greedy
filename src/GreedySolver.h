@@ -10,8 +10,8 @@ private:
   const std::size_t num_rows;
   const std::size_t num_cols;
   const double max_perc_miss;
-  const std::size_t min_rows;
-  const std::size_t min_cols;
+  const std::size_t row_lb;
+  const std::size_t col_lb;
   
   std::vector<std::size_t> alphas;
   std::vector<std::size_t> betas;
@@ -43,8 +43,8 @@ private:
 public:
   GreedySolver(const BinContainer &_data,
                const double max_perc_miss,
-               const std::size_t _min_rows,
-               const std::size_t _min_cols);
+               const std::size_t _row_lb,
+               const std::size_t _col_lb);
   ~GreedySolver();
 
   void solve();

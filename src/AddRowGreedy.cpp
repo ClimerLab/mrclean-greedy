@@ -6,12 +6,12 @@
 // Constructor.
 //------------------------------------------------------------------------------
 AddRowGreedy::AddRowGreedy(const BinContainer &_data,
-                           const std::size_t _min_rows,
-                           const std::size_t _min_cols) : data(&_data),
+                           const std::size_t _row_lb,
+                           const std::size_t _col_lb) : data(&_data),
                                                           num_rows(data->get_num_data_rows()),
                                                           num_cols(data->get_num_data_cols()),
-                                                          min_rows(_min_rows),
-                                                          min_cols(_min_cols),
+                                                          row_lb(_row_lb),
+                                                          col_lb(_col_lb),
                                                           best_obj_value(0),
                                                           best_num_rows(0),
                                                           columns(num_cols, true),
@@ -59,8 +59,8 @@ void AddRowGreedy::solve() {
 
     // If current objective value is better than incumbent, update obj_value and num_rows
     if (cur_obj > best_obj_value &&
-        included_rows.size() >= min_rows &&
-        num_included_cols >= min_cols) {
+        included_rows.size() >= row_lb &&
+        num_included_cols >= col_lb) {
       best_obj_value = cur_obj;
       best_num_rows = included_rows.size();
     }
